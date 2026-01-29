@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Store</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #e0e0e0;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            min-height: 40px;
+        }
+
+        .product-category {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .product-description {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+
+        .product-id {
+            font-size: 12px;
+            color: #bbb;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .error {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: #e74c3c;
+        }
+
+        /* Ẩn ảnh category trong bảng nếu muốn nhỏ hơn */
+        .category-img {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 1px solid #eee;
+            background: #fafafa;
+        }
+        .product-img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 6px;
+            background: #e0e0e0;
+        }
+        .search-bar {
+            max-width: 350px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-4">
+        <h1 class="text-center mb-4">🛍️ Product Store</h1>
+        <div class="d-flex flex-wrap gap-2 mb-3 justify-content-between align-items-center">
+            <input id="searchInput" type="text" class="form-control search-bar" placeholder="Tìm kiếm theo tên sản phẩm..." oninput="onChanged()">
+            <div class="btn-group" role="group" aria-label="Sort group">
+                <button class="btn btn-outline-primary" onclick="sortBy('nameAsc')">Tên A-Z</button>
+                <button class="btn btn-outline-primary" onclick="sortBy('nameDesc')">Tên Z-A</button>
+                <button class="btn btn-outline-success" onclick="sortBy('priceDesc')">Giá giảm dần</button>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle" id="products-table">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ảnh</th>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Danh mục</th>
+                        <th scope="col">Ảnh danh mục</th>
+                        <th scope="col">Mô tả</th>
+                        <th scope="col">Giá</th>
+                    </tr>
+                </thead>
+                <tbody id="products-container">
+                    <tr><td colspan="7" class="text-center">Loading products...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
