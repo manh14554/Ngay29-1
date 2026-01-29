@@ -139,30 +139,23 @@
 </head>
 <body>
     <div class="container py-4">
-        <h1 class="text-center mb-4">🛍️ Product Store</h1>
-        <div class="d-flex flex-wrap gap-2 mb-3 justify-content-between align-items-center">
-            <input id="searchInput" type="text" class="form-control search-bar" placeholder="Tìm kiếm theo tên sản phẩm..." oninput="onChanged()">
-            <div class="btn-group" role="group" aria-label="Sort group">
-                <button class="btn btn-outline-primary" onclick="sortBy('nameAsc')">Tên A-Z</button>
-                <button class="btn btn-outline-primary" onclick="sortBy('nameDesc')">Tên Z-A</button>
-                <button class="btn btn-outline-success" onclick="sortBy('priceDesc')">Giá giảm dần</button>
-            </div>
-        </div>
+        <h1 class="text-center mb-4">📝 Posts & Comments</h1>
+        <!-- Nút Thêm Post sẽ được thêm bằng JS -->
         <div class="table-responsive">
             <table class="table table-bordered align-middle" id="products-table">
                 <thead class="table-light">
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Ảnh</th>
-                        <th scope="col">Tên sản phẩm</th>
-                        <th scope="col">Danh mục</th>
-                        <th scope="col">Ảnh danh mục</th>
-                        <th scope="col">Mô tả</th>
-                        <th scope="col">Giá</th>
+                        <th scope="col">ID</th>
+                        <th scope="col"></th>
+                        <th scope="col">Tiêu đề</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">Lượt xem & Bình luận</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody id="products-container">
-                    <tr><td colspan="7" class="text-center">Loading products...</td></tr>
+                    <tr><td colspan="7" class="text-center">Loading posts...</td></tr>
                 </tbody>
             </table>
         </div>
